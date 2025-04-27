@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_medical_prescriptions",
+  "info": {
+    "displayName": "Prescription",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "prescribedBy": {
+      "type": "string"
+    },
+    "prescriptionDate": {
+      "type": "date"
+    },
+    "Medicine": {
+      "displayName": "medicine",
+      "type": "component",
+      "repeatable": true,
+      "component": "medical.medicine"
+    },
+    "alternateMedicine": {
+      "type": "component",
+      "repeatable": true,
+      "component": "medical.medicine"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "doctorType": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::doctor-specialization.doctor-specialization"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

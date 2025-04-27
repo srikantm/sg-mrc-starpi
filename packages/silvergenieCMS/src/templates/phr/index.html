@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{> header }}
+
+  <body>
+    <div class="col-12 p-4 bg-">
+      <div class="row gap-3">
+        <!-- HEADER -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body d-flex flex-column align-items-center">
+              <h2 class="h4 fw-bold text-primary">
+                My Personal Healthcare Record (PHR)
+              </h2>
+              <img
+                class="img-responsive"
+                alt="iamgurdeeposahan"
+                src="https://www.yoursilvergenie.com/wp-content/uploads/2021/06/sg-logo.f706d385.png"
+                width="170px"
+              />
+              <p class="text-secondary mt-3 mb-0">
+                Your Wellness is our wish to fill
+              </p>
+              <h2 class="h4 m-0 text-primary">
+                Personalized Care for those, who cared for us
+              </h2>
+            </div>
+          </div>
+        </div>
+        <!-- HEADER END -->
+
+        <!-- USER HEADER -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <div>
+                    <p class="fw-bold">{{firstName}} {{lastName}}</p>
+                    <p class="text-secondary">
+                      {{gender}}, {{defaultValue age "0"}} Yrs
+                    </p>
+                  </div>
+                  <div class="mt-3">
+                    <p class="fw-bold">Address:</p>
+                    <p class="text-secondary">
+                      {{address.streetAddress}} {{address.city}}
+                      {{address.state}} {{address.postalCode}}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div>
+                    <p class="fw-bold">Email:</p>
+                    <p class="text-secondary">
+                      {{defaultValue email belongsTo.email}}
+                    </p>
+                  </div>
+                  <div class="mt-3">
+                    <p class="fw-bold">Phone:</p>
+                    <p class="text-secondary">{{belongsTo.phoneNumber}}</p>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div>
+                    <p class="fw-bold">Blood Group</p>
+                    <p class="text-secondary">{{bloodGroup}}</p>
+                  </div>
+                  {{!--
+                  <div class="mt-3">
+                    <p class="fw-bold">Address:</p>
+                    <p class="text-secondary">Male, 25 Yrs</p>
+                  </div>
+                  --}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- USER HEADER END -->
+
+        <!-- EMERGENCY CONTACTS -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <p class="lead fw-bold text-decoration-underline">
+                  Emergency Contacts
+                </p>
+                <table class="table table-bordered border-primary fs-6">
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">Personal</th>
+                      <th scope="col">Hospitals</th>
+                      <th scope="col">Doctors</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="">
+                      <td class="p-0" scope="row">
+                        {{#each emergencyContactsGrouped.Personal}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}} {{#each emergencyContactsGrouped.Parents}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}} {{#each emergencyContactsGrouped.Guardian}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}}
+                      </td>
+                      <td class="p-0" scope="row">
+                        {{#each emergencyContactsGrouped.Hospital}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}}
+                      </td>
+                      <td class="p-0" scope="row">
+                        {{#each emergencyContactsGrouped.Doctor}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}} {{#each emergencyContactsGrouped.Pharmacy}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- EMERGENCY CONTACTS ENDS -->
+
+        <!-- Medical Conditions -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <p class="lead fw-bold text-decoration-underline">
+                  Medical Conditions
+                </p>
+                <div class="row pt-3">
+                  <div class="col-12">
+                    <p class="fw-bold fs-5 text-primary">Present Conditions</p>
+
+                    {{!--
+                    <table class="table table-bordered border-primary fs-6">
+                      <thead class="bg-primary text-white">
+                        <tr>
+                          <th scope="col">Condition</th>
+                          <th scope="col">Diagnosed Date</th>
+                          <th scope="col">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each medicalConditionsGrouped.present}}
+                        <tr class="">
+                          <td scope="row">
+                            {{defaultValue this.condition.name "NA"}}
+                          </td>
+                          <td scope="row">
+                            {{defaultValue this.diagnosedDate "NA"}}
+                          </td>
+                          <td scope="row">
+                            <b
+                              >Value: {{defaultValue this.diagnosedValue
+                              "NA"}}</b
+                            >
+                            <br />
+                            {{defaultValue this.description "NA"}}
+                          </td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
+                    --}}
+                    <div class="border mb-1 p-2">
+                      {{#each medicalConditionsGrouped.present}}
+                      <p class="fw-bold">
+                        <span class="text-decoration-underline">Name:</span>
+                        <span class="text-sky-600"
+                          >{{this.condition.name}}</span
+                        >
+                      </p>
+                      <p>
+                        <strong class="text-decoration-underline"
+                          >Description:</strong
+                        >
+                        {{!-- {{#if this.diagnosedValue}}
+                        <b>Value: {{defaultValue this.diagnosedValue "NA"}}</b>
+                        <br />
+                        {{/if}} --}} {{defaultValue this.description "NA"}}
+                      </p>
+                      {{/each}}
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <p class="fw-bold fs-5 text-warning">Past Conditions</p>
+
+                    {{!--
+                    <table class="table table-bordered border-primary fs-6">
+                      <thead class="bg-primary text-white">
+                        <tr>
+                          <th scope="col">Condition</th>
+                          <th scope="col">Diagnosed Date</th>
+                          <th scope="col">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each medicalConditionsGrouped.present}}
+                        <tr class="">
+                          <td scope="row">
+                            {{defaultValue this.condition.name "NA"}}
+                          </td>
+                          <td scope="row">
+                            {{defaultValue this.diagnosedDate "NA"}}
+                          </td>
+                          <td scope="row">
+                            <b
+                              >Value: {{defaultValue this.diagnosedValue
+                              "NA"}}</b
+                            >
+                            <br />
+                            {{defaultValue this.description "NA"}}
+                          </td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
+                    --}}
+                    <div class="border mb-1 p-2">
+                      {{#each medicalConditionsGrouped.past}}
+                      <p class="fw-bold">
+                        <span class="text-decoration-underline">Name:</span>
+                        <span class="text-sky-600"
+                          >{{this.condition.name}}</span
+                        >
+                      </p>
+                      <p>
+                        <strong class="text-decoration-underline"
+                          >Description:</strong
+                        >
+                        {{!-- {{#if this.diagnosedValue}}
+                        <b>Value: {{defaultValue this.diagnosedValue "NA"}}</b>
+                        <br />
+                        {{/if}} --}} {{defaultValue this.description "NA"}}
+                      </p>
+                      {{/each}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Medical Conditions -->
+
+        <!-- PRESCRIPTION -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <p class="lead fw-bold text-decoration-underline">
+                  Prescription Medicine
+                </p>
+                <p class="">Medicines You're currently taking</p>
+                <table class="table table-bordered border-primary fs-6">
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Prescribed By</th>
+                      <th scope="col">Medicine Name</th>
+                      <th scope="col">Dose</th>
+                      <th scope="col">Dosage</th>
+                      <th scope="col">When to Take</th>
+                      <th scope="col">Duration</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each prescription as |pres presIndex|}}
+                    <tr class="same-height-row">
+                      <td scope="row">{{pres.prescriptionDate}}</td>
+                      <td scope="row">
+                        {{pres.prescribedBy}} {{#if doctorType.name}}
+                        <br />({{doctorType.name}}) {{/if}}
+                        <br />
+                        {{#each pres.media}}
+                        <a href="{{absoluteUrl this.url}}">{{this.name}}</a>
+                        {{/each}}
+                      </td>
+                      <td class="p-0 m-0 same-height">
+                        <table class="table p-0 m-0 border-primarydd">
+                          <tbody>
+                            {{#each pres.Medicine}}
+                            <tr>
+                              <td>{{defaultValue this.name "NA"}}</td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </td>
+                      <td class="p-0 m-0 same-height">
+                        <table class="table p-0 m-0 border-primarydd">
+                          <tbody>
+                            {{#each pres.Medicine}}
+                            <tr>
+                              <td>{{defaultValue this.dose "NA"}}</td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </td>
+                      <td class="p-0 m-0 same-height">
+                        <table class="table p-0 m-0 border-primarydd">
+                          <tbody>
+                            {{#each pres.Medicine}}
+                            <tr>
+                              <td>{{defaultValue this.Dosage "NA"}}</td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </td>
+                      <td class="p-0 m-0 same-height">
+                        <table class="table p-0 m-0 border-primarydd">
+                          <tbody>
+                            {{#each pres.Medicine}}
+                            <tr>
+                              <td>{{defaultValue this.schedule "NA"}}</td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </td>
+                      <td class="p-0 m-0 same-height">
+                        <table class="table p-0 m-0 border-primarydd">
+                          <tbody>
+                            {{#each pres.Medicine}}
+                            <tr>
+                              <td>{{defaultValue this.Duration "NA"}}</td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- PRESCRIPTION ENDS -->
+
+        <!-- ALTERNATE PRESCRIPTION -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <p
+                  class="lead fw-bold text-decoration-underline text-decoration-underline"
+                >
+                  Alternate Medicine
+                </p>
+                <p class="">Medicines You're currently taking</p>
+                <table class="table table-bordered border-primary fs-6">
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Prescribed By</th>
+                      <th scope="col">Medicine Name</th>
+                      <th scope="col">Dose</th>
+                      <th scope="col">Dosage</th>
+                      <th scope="col">When to Take</th>
+                      <th scope="col">Duration</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each prescription as |pres presIndex|}} {{#if
+                    pres.alternateMedicine.length}}
+                    <tr class="">
+                      <td scope="row">{{pres.prescriptionDate}}</td>
+                      <td scope="row">
+                        {{pres.prescribedBy}}
+                        <br />
+                        {{#each pres.media}}
+                        <a href="{{absoluteUrl this.url}}">{{this.name}}</a>
+                        {{/each}}
+                      </td>
+                      <td class="p-0 m-0">
+                        <table class="table p-0 m-0 border-primarydd">
+                          <tbody>
+                            {{#each pres.alternateMedicine}}
+                            <tr>
+                              <td>{{defaultValue this.name "NA"}}</td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </td>
+                      <td class="p-0 m-0">
+                        <table class="table p-0 m-0 border-primarydd">
+                          <tbody>
+                            {{#each pres.alternateMedicine}}
+                            <tr>
+                              <td>{{defaultValue this.dose "NA"}}</td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </td>
+                      <td class="p-0 m-0">
+                        <table class="table p-0 m-0 border-primarydd">
+                          <tbody>
+                            {{#each pres.alternateMedicine}}
+                            <tr>
+                              <td>{{defaultValue this.Dosage "NA"}}</td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </td>
+                      <td class="p-0 m-0">
+                        <table class="table p-0 m-0 border-primarydd">
+                          <tbody>
+                            {{#each pres.alternateMedicine}}
+                            <tr>
+                              <td>{{defaultValue this.schedule "NA"}}</td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </td>
+                      <td class="p-0 m-0">
+                        <table class="table p-0 m-0 border-primarydd">
+                          <tbody>
+                            {{#each pres.alternateMedicine}}
+                            <tr>
+                              <td>{{defaultValue this.Duration "NA"}}</td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    {{/if}} {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ALTERNATE PRESCRIPTION ENDS -->
+
+        <!-- DIAGNOSTIC -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <div
+                  class="d-flex justify-content-between align-content-center lh-lg"
+                >
+                  <p class="lead fw-bold text-decoration-underline">
+                    Diagnostic Services
+                  </p>
+                  <p>
+                    <a
+                      href="https://api.yoursilvergenie.com/admin/plugins/silvergenie/user-wallets/phr/diagnostic/{{id}}"
+                      target="_blank"
+                      >View Charts</a
+                    >
+                  </p>
+                </div>
+                <p class="">Diagnostic services in the last 3 months:</p>
+                <table class="table table-bordered border-primary fs-6">
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Lab/ Hospitals</th>
+                      <th scope="col">Test Name</th>
+                      <th scope="col">Result</th>
+                      <th scope="col">Comments</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each diagnosedServices}}
+                    <tr class="">
+                      <td scope="row">{{this.diagnosedDate}}</td>
+                      <td scope="row">
+                        {{this.serviceProvider.name}}
+                        <ul>
+                          {{#each this.media}}
+                          <li>
+                            <a
+                              href="https://api.yoursilvergenie.com{{this.url}}"
+                              >{{defaultValue this.name "NA"}}</a
+                            >
+                          </li>
+                          {{/each}}
+                        </ul>
+                      </td>
+                      <td scope="row">{{this.serviceName.name}}</td>
+                      <td scope="row">{{this.value}}</td>
+                      <td scope="row">{{this.description}}</td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- DIAGNOSTIC ENDS -->
+
+        <!-- ALLERGY -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <p class="lead fw-bold text-decoration-underline">
+                  Allergy Records
+                </p>
+                <table class="table table-bordered border-primary fs-6">
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">Allergy Type</th>
+                      <th scope="col">Allergy From/ Component</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Diagnosed Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each allergies}}
+                    <tr class="">
+                      <td scope="row">
+                        {{defaultValue this.allergyType "NA"}}
+                      </td>
+                      <td scope="row">
+                        {{defaultValue this.alleryComponent "NA"}}
+                      </td>
+                      <td scope="row" class="noWrap">
+                        {{defaultValue this.description "NA"}}
+                      </td>
+                      <td scope="row" class="">
+                        {{defaultValue this.diagnosedDate "NA"}}
+                      </td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ALLERGY ENDS -->
+
+        <!-- CHRONIC -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <div
+                  class="d-flex justify-content-between align-content-center lh-lg"
+                >
+                  <p class="lead fw-bold text-decoration-underline">
+                    Chronic Conditions
+                  </p>
+                  <p>
+                    <a
+                      href="https://api.yoursilvergenie.com/admin/plugins/silvergenie/user-wallets/phr/vitals/{{id}}"
+                      target="_blank"
+                      >View Charts</a
+                    >
+                  </p>
+                </div>
+                <div class="row pt-3">
+                  {{#each chronicConditionGrouped as |chronic chronicIndex|}}
+                  <div class="col-4">
+                    <div class="d-flex justify-content-between">
+                      <p class="fw-bold">{{defaultValue chronic.label "NA"}}</p>
+                      {{!--
+                      <a href="#" class="text-decoration-none link-primary"
+                        >View More</a
+                      >
+                      --}}
+                    </div>
+                    <table class="table table-bordered border-primary fs-6">
+                      <tbody style="font-size: 11px">
+                        {{#each chronic.value}}
+                        <tr class="">
+                          <td scope="row">{{this.diagnosedDate}}</td>
+                          <td scope="row">{{defaultValue this.value "NA"}}</td>
+                          <td scope="row">
+                            {{defaultValue this.description "NA"}}
+                          </td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- CHRONIC ENDS -->
+
+        <!-- VACCINE -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <p class="lead fw-bold text-decoration-underline">
+                  Vaccination Records
+                </p>
+                <div class="d-flex flex-wrap gap-5 pt-3">
+                  {{#each vaccineRecords}}
+                  <div>
+                    <p class="fw-bold">{{this.name}}</p>
+                    <p class="text-secondary">{{this.vaccinationDate}}</p>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- VACCINE ENDS -->
+
+        <!-- COVID Vaccine -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <p class="lead fw-bold text-decoration-underline">
+                  COVID Vaccine
+                </p>
+                <table class="table table-bordered border-primary fs-6">
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">Name of Vaccine</th>
+                      <th scope="col">Administration Site</th>
+                      <th scope="col">Shots</th>
+                      <th scope="col">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each covidVaccines}}
+                    <tr class="">
+                      <td scope="row">
+                        {{defaultValue this.vaccineName "NA"}}
+                      </td>
+                      <td scope="row">
+                        {{defaultValue this.admissionSite "NA"}}
+                      </td>
+                      <td scope="row">{{defaultValue this.Shot "NA"}}</td>
+                      <td scope="row">{{defaultValue this.shotDate "NA"}}</td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- COVID Vaccine -->
+
+        <!-- Additional Conditions -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <p class="lead fw-bold text-decoration-underline">
+                  Additional Information
+                </p>
+                {{additionalInformation}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Additional Conditions -->
+
+        <!-- Additional Conditions -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <p class="lead fw-bold text-decoration-underline">
+                  Additional Documents
+                </p>
+                <ul>
+                  {{#each documents}}
+                  <li>
+                    <a href="https://api.yoursilvergenie.com{{this.url}}"
+                      >{{defaultValue this.name "NA"}}</a
+                    >
+                  </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Additional Conditions -->
+
+        <div class="text-center text-capitalize px-5">
+          <p class="fw-bold">Created By</p>
+          <p>{{createdBy.firstname}} {{createdBy.lastname}}</p>
+          <a href="mailto:geniecare@yoursilvergenie.com">{{createdBy.email}}</a>
+
+          <p class="fw-bold">Created On: {{formatDate createdAt}}</p>
+          <p class="">To get your PHR updated, please contact SilverGenie at</p>
+          <a href="mailto:geniecare@yoursilvergenie.com"
+            >geniecare@yoursilvergenie.com</a
+          >
+          <p class="">
+            <span class="fw-bolder text-primary">Disclaimer:</span>
+          </p>
+          This form contains only and exactly that information which was
+          provided to us by the client or their loved one.
+        </div>
+      </div>
+    </div>
+    {{> footer }}
+    <script>
+      $(function () {
+        const prescriptionSameHeightMatrix = $("tr.same-height-row");
+        // console.log(prescriptionSameHeightMatrix);
+        prescriptionSameHeightMatrix.each(function () {
+          const tds = $(this).find("td.same-height");
+          const totalRowsCount = $(tds[0]).find("tr").length;
+          const rowMatrix = [];
+          for (let i = 0; i < totalRowsCount; i++) {
+            const row = [];
+            let rowHeight = 0;
+            tds.each(function () {
+              const cell = $(this).find("tr")[i];
+              row.push(cell);
+              const cellHeight = $(cell).height();
+              if (cellHeight > rowHeight) {
+                rowHeight = cellHeight;
+              }
+            });
+            rowMatrix.push({
+              rowHeight,
+              row,
+            });
+            // console.log(row, "ROW");
+          }
+          // console.log(rowMatrix);
+          rowMatrix.forEach(function (val) {
+            val.row.forEach(function (ele) {
+              console.log($(ele), val);
+              $(ele).css("height", val.rowHeight);
+            });
+          });
+          // tds.each(function () {
+          //   const rows
+          // });
+          // console.log(tds, totalRowsCount);
+        });
+      });
+    </script>
+  </body>
+  <!-- (Optional) Use CSS or JS implementation -->
+</html>

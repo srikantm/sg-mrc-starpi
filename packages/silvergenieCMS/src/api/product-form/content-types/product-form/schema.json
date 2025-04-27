@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_forms",
+  "info": {
+    "singularName": "product-form",
+    "pluralName": "product-forms",
+    "displayName": "ProductForm",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "form": {
+      "type": "dynamiczone",
+      "components": [
+        "form-field-type.date-question",
+        "form-field-type.choice-question",
+        "form-field-type.reference-question",
+        "form-field-type.text-question",
+        "form-field-type.decimal-question",
+        "form-field-type.integer-question"
+      ],
+      "required": true
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "product_form"
+    },
+    "service_trackers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-tracker.service-tracker",
+      "mappedBy": "service_form"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "answers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-form-answer.product-form-answer",
+      "mappedBy": "form"
+    }
+  }
+}

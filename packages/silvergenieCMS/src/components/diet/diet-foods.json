@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_diet_diet_foods",
+  "info": {
+    "displayName": "dietFoods"
+  },
+  "options": {},
+  "attributes": {
+    "food": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::food-db.food-db"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

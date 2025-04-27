@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_details",
+  "info": {
+    "singularName": "user-detail",
+    "pluralName": "user-details",
+    "displayName": "UserDetail",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "user_detail"
+    },
+    "emergencyContacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user-contacts.detailed-contact"
+    },
+    "UserInsurance": {
+      "displayName": "UserInsurance",
+      "type": "component",
+      "repeatable": true,
+      "component": "medical.user-insurance"
+    },
+    "preferredServices": {
+      "type": "component",
+      "repeatable": true,
+      "component": "medical.emergency-service"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "collectionName": "comp_vital_medical_conditions",
+  "info": {
+    "displayName": "medical Condition",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "condition": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::chronic.chronic"
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 500
+    },
+    "conditionType": {
+      "type": "enumeration",
+      "enum": [
+        "past",
+        "present",
+        "other"
+      ],
+      "default": "past"
+    },
+    "diagnosedDate": {
+      "type": "date"
+    },
+    "diagnosedValue": {
+      "type": "text",
+      "required": false,
+      "maxLength": 500
+    }
+  }
+}

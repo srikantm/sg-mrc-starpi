@@ -1,0 +1,28 @@
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+{{!--
+<script type="text/javascript">
+  const pageBreak = `<div style="page-break-after: always"></div>`;
+  const pixelPerMM = $("body").width() / 210;
+  const allowedPageHeight = pixelPerMM * 297;
+  let page = 1;
+  let pageHeight = 0;
+  $(".phr-section").each((index, value) => {
+    const c = $(value);
+    const cHeight = c.height() + 26;
+    pageHeight = pageHeight + cHeight;
+    if (pageHeight > allowedPageHeight) {
+      page = page + 1;
+      pageHeight = cHeight;
+      c.before(pageBreak);
+    }
+  });
+
+  $("body").css({ minHeight: `${297 * page}mm` });
+</script>
+--}}
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>

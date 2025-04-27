@@ -1,0 +1,129 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "subscription",
+        "service"
+      ],
+      "default": "service",
+      "required": true
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service-components.metadata"
+    },
+    "benefits": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::benefit.benefit"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "homeCare",
+        "convenienceCare",
+        "healthCare",
+        "subscription"
+      ],
+      "required": false
+    },
+    "prices": {
+      "displayName": "ProductPrice",
+      "type": "component",
+      "repeatable": true,
+      "component": "service-components.product-price",
+      "required": false
+    },
+    "code": {
+      "type": "customField",
+      "customField": "plugin::strapi-advanced-uuid.uuid"
+    },
+    "subscriptionContent": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service-components.product-content"
+    },
+    "form": {
+      "type": "dynamiczone",
+      "components": [
+        "form-field-type.boolean-question",
+        "form-field-type.decimal-question",
+        "form-field-type.date-question",
+        "form-field-type.time-question",
+        "form-field-type.date-time-question",
+        "form-field-type.string-question",
+        "form-field-type.reference-question",
+        "form-field-type.choice-question",
+        "form-field-type.text-question"
+      ]
+    },
+    "serviceContent": {
+      "type": "dynamiczone",
+      "components": [
+        "service-components.service-working-steps",
+        "service-components.service-description",
+        "service-components.service-enquiry",
+        "service-components.service-faq",
+        "service-components.content-price",
+        "service-components.offerings",
+        "service-components.service-price",
+        "service-components.banner"
+      ],
+      "min": 0
+    },
+    "upgradeable_products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "subscription_trackers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subscription-tracker.subscription-tracker",
+      "mappedBy": "product"
+    },
+    "product_form": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product-form.product-form",
+      "inversedBy": "products"
+    },
+    "service_trackers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-tracker.service-tracker",
+      "mappedBy": "product"
+    }
+  }
+}

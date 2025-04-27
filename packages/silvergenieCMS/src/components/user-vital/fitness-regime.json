@@ -1,0 +1,23 @@
+{
+  "collectionName": "comp_vital_fitness_regimes",
+  "info": {
+    "displayName": "fitness Regime",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "fitnessLevel": {
+      "type": "enumeration",
+      "enum": [
+        "Sedentary",
+        "Moderate",
+        "Intermediate",
+        "Advanced"
+      ],
+      "default": "Moderate"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "collectionName": "components_service_components_product_prices",
+  "info": {
+    "displayName": "ProductPrice",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "rules": {
+      "displayName": "ProductPriceRule",
+      "type": "component",
+      "repeatable": true,
+      "component": "service-components.product-price-rule",
+      "required": false
+    },
+    "unitAmount": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "label": {
+      "type": "string"
+    },
+    "billingScheme": {
+      "type": "enumeration",
+      "enum": [
+        "perUnit"
+      ]
+    },
+    "pricingType": {
+      "type": "enumeration",
+      "enum": [
+        "oneTime",
+        "recurring",
+        "contactUs"
+      ],
+      "required": true
+    },
+    "recurringInterval": {
+      "type": "enumeration",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly",
+        "yearly"
+      ]
+    },
+    "recurringIntervalCount": {
+      "type": "integer",
+      "min": 1,
+      "required": false
+    },
+    "recurringPlanId": {
+      "type": "string"
+    },
+    "benefitApplicableToMembersLimit": {
+      "type": "integer",
+      "min": 1,
+      "default": 1,
+      "required": true
+    },
+    "discountPercentage": {
+      "type": "decimal",
+      "max": 100,
+      "min": 0
+    },
+    "amountWithoutDiscount": {
+      "type": "decimal"
+    }
+  }
+}

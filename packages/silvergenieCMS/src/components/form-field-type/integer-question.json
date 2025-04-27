@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_form_field_type_integer_questions",
+  "info": {
+    "displayName": "IntegerQuestion"
+  },
+  "options": {},
+  "attributes": {
+    "defaultValue": {
+      "type": "integer"
+    },"validations": {
+      "displayName": "FormValidation",
+      "type": "component",
+      "repeatable": true,
+      "component": "form-field-type.form-validation"
+    },
+    "formDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service-components.product-form",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "integer"
+      ],
+      "default": "integer",
+      "required": true
+    }
+  }
+}
+

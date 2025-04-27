@@ -1,0 +1,28 @@
+{
+  "collectionName": "comp_vital_covid_vaccines",
+  "info": {
+    "displayName": "covid Vaccine"
+  },
+  "options": {},
+  "attributes": {
+    "vaccineName": {
+      "type": "string"
+    },
+    "admissionSite": {
+      "type": "string"
+    },
+    "Shot": {
+      "type": "enumeration",
+      "enum": [
+        "First",
+        "Second",
+        "Third",
+        "Booster"
+      ],
+      "default": "First"
+    },
+    "shotDate": {
+      "type": "date"
+    }
+  }
+}

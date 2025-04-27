@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_service_components_service_faqs",
+  "info": {
+    "displayName": "ServiceFAQ"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "faq": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service-components.faq"
+    }
+  }
+}

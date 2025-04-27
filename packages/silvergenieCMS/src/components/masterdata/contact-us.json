@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_masterdata_contactuses",
+  "info": {
+    "displayName": "contactUs"
+  },
+  "options": {},
+  "attributes": {
+    "contactNumber": {
+      "type": "biginteger",
+      "required": true
+    }
+  }
+}

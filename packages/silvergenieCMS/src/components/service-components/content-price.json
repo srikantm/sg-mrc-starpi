@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_service_components_content_prices",
+  "info": {
+    "displayName": "ContentPrice",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true,
+      "min": 1
+    },
+    "amountWithoutDiscount": {
+      "type": "decimal",
+      "min": 1
+    },
+    "discountPercentage": {
+      "type": "decimal",
+      "max": 100,
+      "min": 0
+    },
+    "pricingType": {
+      "type": "enumeration",
+      "enum": [
+        "oneTime",
+        "perHour"
+      ],
+      "required": true
+    },
+    "showInclusiveOfAllTaxes": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

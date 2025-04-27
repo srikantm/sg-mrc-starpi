@@ -1,0 +1,107 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_trackers",
+  "info": {
+    "singularName": "service-tracker",
+    "pluralName": "service-trackers",
+    "displayName": "ServiceTracker",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "service_trackers"
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "due",
+        "paid",
+        "partiallyPaid",
+        "expired"
+      ]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "requested",
+        "processing",
+        "processed",
+        "active",
+        "completed",
+        "rejected"
+      ],
+      "required": true,
+      "default": "requested"
+    },
+    "family": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::family.family",
+      "inversedBy": "service_trackers"
+    },
+    "serviceFormAnwserJSON": {
+      "type": "json"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "priceId": {
+      "type": "integer"
+    },
+    "service_form": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product-form.product-form",
+      "inversedBy": "service_trackers"
+    },
+    "requestedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "requestedServices"
+    },
+    "requestedFor": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "services_trackers"
+    },
+    "requestedAt": {
+      "type": "datetime",
+      "required": true
+    },
+    "form_answer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product-form-answer.product-form-answer",
+      "mappedBy": "service"
+    },
+    "razorpayOrderId": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service-components.service-data"
+    },
+    "payment_transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment-transaction.payment-transaction",
+      "mappedBy": "service_tracker"
+    },
+    "priceDetails": {
+      "displayName": "priceDetails",
+      "type": "component",
+      "repeatable": false,
+      "component": "price.price-details"
+    }
+  }
+}

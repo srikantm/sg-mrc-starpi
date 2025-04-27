@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_notifications",
+  "info": {
+    "singularName": "user-notification",
+    "pluralName": "user-notifications",
+    "displayName": "userNotification",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "message": {
+      "type": "text",
+      "required": true,
+      "minLength": 1
+    },
+    "read": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "app"
+      ],
+      "default": "default",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_notifications"
+    },
+    "readAt": {
+      "type": "datetime"
+    },
+    "actionType": {
+      "type": "enumeration",
+      "enum": [
+        "openPage",
+        "none"
+      ],
+      "required": true,
+      "default": "none"
+    },
+    "actionUrl": {
+      "type": "string"
+    },
+    "additionalData": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service-components.metadata"
+    }
+  }
+}

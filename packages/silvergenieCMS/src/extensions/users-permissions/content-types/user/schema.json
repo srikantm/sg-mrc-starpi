@@ -1,0 +1,214 @@
+{
+  "kind": "collectionType",
+  "collectionName": "up_users",
+  "info": {
+    "name": "user",
+    "description": "",
+    "singularName": "user",
+    "pluralName": "users",
+    "displayName": "User"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "unique": true,
+      "configurable": false,
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "configurable": false,
+      "required": true,
+      "unique": true
+    },
+    "provider": {
+      "type": "string",
+      "configurable": false
+    },
+    "password": {
+      "type": "password",
+      "minLength": 6,
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "resetPasswordToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "confirmationToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.role",
+      "inversedBy": "users",
+      "configurable": false
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Female",
+        "Other"
+      ],
+      "default": "Male"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 20,
+      "required": true,
+      "unique": true
+    },
+    "dateOfBirth": {
+      "type": "date",
+      "required": true
+    },
+    "address": {
+      "displayName": "address",
+      "type": "component",
+      "repeatable": false,
+      "component": "user-contacts.address"
+    },
+    "relation": {
+      "type": "string"
+    },
+    "profileImg": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user"
+    },
+    "uniqueKey": {
+      "type": "customField",
+      "options": {
+        "attributes": "username, email"
+      },
+      "customField": "plugin::custom-entity-key.unique-key"
+    },
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "user_subscriptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-subscription.user-subscription",
+      "mappedBy": "user"
+    },
+    "phr": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phr.phr",
+      "mappedBy": "belongsTo"
+    },
+    "user_detail": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::user-detail.user-detail",
+      "inversedBy": "user"
+    },
+    "userTags": {
+      "type": "customField",
+      "customField": "plugin::tagsinput.tags"
+    },
+    "diet_chart": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::diet-chart.diet-chart",
+      "mappedBy": "user"
+    },
+    "family": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::family.family",
+      "inversedBy": "users"
+    },
+    "isFamilyMember": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "requestedServices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-tracker.service-tracker",
+      "mappedBy": "requestedBy"
+    },
+    "services_trackers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service-tracker.service-tracker",
+      "mappedBy": "requestedFor"
+    },
+    "subscriptions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::subscription-tracker.subscription-tracker",
+      "mappedBy": "belongsTo"
+    },
+    "fcm": {
+      "type": "string",
+      "private": true
+    },
+    "user_notifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-notification.user-notification",
+      "mappedBy": "user"
+    },
+    "care_coach": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::care-coach.care-coach",
+      "inversedBy": "members"
+    },
+    "createdSubscriptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subscription-tracker.subscription-tracker",
+      "mappedBy": "subscribedBy"
+    },
+    "isEmailVerified": {
+      "type": "boolean",
+      "default": false
+    },
+    "isPhoneNumberVerified": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

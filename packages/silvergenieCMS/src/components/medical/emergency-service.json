@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_medical_emergency_services",
+  "info": {
+    "displayName": "emergencyService",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "contactPerson": {
+      "type": "string",
+      "required": true
+    },
+    "contactNumber": {
+      "type": "string",
+      "required": true
+    },
+    "preferredRank": {
+      "type": "integer",
+      "default": 12
+    },
+    "ambulanceContact": {
+      "type": "string"
+    },
+    "serviceType": {
+      "type": "enumeration",
+      "enum": [
+        "Ambulance",
+        "Hospital"
+      ],
+      "default": "Hospital"
+    },
+    "TypeOfSupport": {
+      "type": "enumeration",
+      "enum": [
+        "BLS - Basic Life Support",
+        "ALS - Advance Life Support"
+      ],
+      "default": "BLS - Basic Life Support"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_form_answers",
+  "info": {
+    "singularName": "product-form-answer",
+    "pluralName": "product-form-answers",
+    "displayName": "ProductFormAnswer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "form": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product-form.product-form",
+      "inversedBy": "answers"
+    },
+    "service": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::service-tracker.service-tracker",
+      "inversedBy": "form_answer"
+    },
+    "answers": {
+      "displayName": "formAnswer",
+      "type": "component",
+      "repeatable": true,
+      "component": "form.form-answer"
+    }
+  }
+}

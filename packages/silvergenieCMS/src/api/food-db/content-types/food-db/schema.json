@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "food_dbs",
+  "info": {
+    "singularName": "food-db",
+    "pluralName": "food-dbs",
+    "displayName": "foodDb",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "calorie": {
+      "type": "decimal"
+    },
+    "protein": {
+      "type": "decimal"
+    },
+    "carbs": {
+      "type": "decimal"
+    },
+    "fibre": {
+      "type": "decimal"
+    },
+    "fats": {
+      "type": "decimal"
+    }
+  }
+}

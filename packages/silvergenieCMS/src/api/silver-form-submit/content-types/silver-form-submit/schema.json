@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "silver_form_submits",
+  "info": {
+    "singularName": "silver-form-submit",
+    "pluralName": "silver-form-submits",
+    "displayName": "silverFormSubmit"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "silver_form": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::silver-form.silver-form"
+    },
+    "details": {
+      "type": "json"
+    }
+  }
+}

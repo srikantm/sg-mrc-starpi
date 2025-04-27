@@ -1,0 +1,23 @@
+{
+  "collectionName": "comp_vital_vaccine_records",
+  "info": {
+    "displayName": "Vaccine Records",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "givenBy": {
+      "type": "string"
+    },
+    "vaccinationDate": {
+      "type": "date"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_bookings",
+  "info": {
+    "singularName": "service-booking",
+    "pluralName": "service-bookings",
+    "displayName": "serviceBooking",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "service": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::service.service"
+    },
+    "subService": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sub-service.sub-service"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "COMPLETE",
+        "PENDING",
+        "CANCELLED",
+        "FAILED"
+      ],
+      "default": "PENDING"
+    },
+    "bookingDate": {
+      "type": "date"
+    },
+    "completionDate": {
+      "type": "date"
+    },
+    "bookedBy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "serviceDuration": {
+      "type": "integer"
+    },
+    "period": {
+      "type": "enumeration",
+      "enum": [
+        "day",
+        "night",
+        "day+night"
+      ]
+    },
+    "comments": {
+      "type": "richtext"
+    },
+    "serviceStartDate": {
+      "type": "datetime"
+    },
+    "payment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::payment-transaction.payment-transaction"
+    }
+  }
+}

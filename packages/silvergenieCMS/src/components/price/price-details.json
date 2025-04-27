@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_price_price_details",
+  "info": {
+    "displayName": "priceDetails",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "totalAmount": {
+      "type": "float",
+      "required": true
+    },
+    "products": {
+      "displayName": "productPrice",
+      "type": "component",
+      "repeatable": true,
+      "component": "price.product-price"
+    },
+    "subTotal": {
+      "type": "float",
+      "required": true,
+      "min": 0
+    },
+    "taxes": {
+      "displayName": "Tax",
+      "type": "component",
+      "repeatable": true,
+      "component": "price.tax"
+    },
+    "discounts": {
+      "displayName": "discount",
+      "type": "component",
+      "repeatable": true,
+      "component": "price.discount"
+    },
+    "totalTax": {
+      "type": "float",
+      "required": true,
+      "default": 0
+    },
+    "totalDiscount": {
+      "type": "float",
+      "required": true,
+      "default": 0
+    }
+  }
+}

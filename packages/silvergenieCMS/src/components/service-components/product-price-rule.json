@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_service_components_product_price_rules",
+  "info": {
+    "displayName": "ProductPriceRule",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "ruleType": {
+      "type": "enumeration",
+      "enum": [
+        "pincodeEquals",
+        "pincodeRange",
+        "hoursEq",
+        "default"
+      ],
+      "required": true
+    },
+    "value": {
+      "type": "text",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

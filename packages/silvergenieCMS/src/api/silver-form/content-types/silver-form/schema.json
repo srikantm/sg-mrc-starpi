@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "silver_forms",
+  "info": {
+    "singularName": "silver-form",
+    "pluralName": "silver-forms",
+    "displayName": "silverForm",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "fields": {
+      "displayName": "formField",
+      "type": "component",
+      "repeatable": true,
+      "component": "system.form-field"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

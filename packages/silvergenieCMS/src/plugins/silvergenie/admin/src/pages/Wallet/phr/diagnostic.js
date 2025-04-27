@@ -1,0 +1,294 @@
+import React, { useEffect, useMemo, useState } from "react";
+// import PropTypes from 'prop-types';
+import pluginId from "../../../pluginId";
+import { useCMEditViewDataManager } from "@strapi/helper-plugin";
+import axios from "../../../utils/axiosInstance";
+import { openUrl } from "../../../utils";
+import { groupBy, sortBy, kebabCase } from "lodash";
+import {
+  HeaderLayout,
+  ContentLayout,
+  Layout,
+  Select,
+  Option,
+  Box as Sbox,
+  Flex,
+  NumberInput,
+  Checkbox,
+  Alert,
+  Button as SButton,
+} from "@strapi/design-system";
+import { BarPlot } from "@mui/x-charts/BarChart";
+import { LinePlot } from "@mui/x-charts/LineChart";
+import { ChartContainer } from "@mui/x-charts/ChartContainer";
+import { AllSeriesType } from "@mui/x-charts/models";
+import { ChartsXAxis } from "@mui/x-charts/ChartsXAxis";
+import { ChartsYAxis } from "@mui/x-charts/ChartsYAxis";
+import { BarChart } from "@mui/x-charts/BarChart";
+import { Icon } from "@iconify/react";
+import { Link as RDLink, useParams } from "react-router-dom";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { useRef } from "react";
+import ReactToPrint from "react-to-print";
+import {
+  Grid,
+  Typography,
+  CircularProgress,
+  Link,
+  Button,
+  Box,
+} from "@mui/material";
+
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip
+  // Legend
+);
+
+const baseRoute = "/admin/plugins/silvergenie/user-wallets";
+const Card = React.forwardRef(({ children, ...props }, ref) => {
+  return (
+    <Box
+      width={"100vw"}
+      component={Sbox}
+      shadow="filterShadow"
+      padding={6}
+      borderRadius="4px"
+      marginBottom="24px"
+      background="neutral0"
+      {...props}
+      ref={ref}
+    >
+      {children}
+    </Box>
+  );
+});
+
+const defaultOptions = {
+  responsive: true,
+  interaction: {
+    mode: "index",
+    intersect: false,
+  },
+  stacked: false,
+  plugins: {
+    title: {
+      display: true,
+      text: "chart",
+    },
+  },
+  scales: {
+    y: {
+      type: "linear",
+      display: true,
+      position: "left",
+    },
+  },
+};
+// const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+// export const data = {
+//   labels,
+//   datasets: [
+//     {
+//       label: 'Dataset 1',
+//       data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+//       borderColor: 'rgb(255, 99, 132)',
+//       backgroundColor: 'rgba(255, 99, 132, 0.5)',
+//       yAxisID: 'y',
+//     },
+//     // {
+//     //   label: 'Dataset 2',
+//     //   data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+//     //   borderColor: 'rgb(53, 162, 235)',
+//     //   backgroundColor: 'rgba(53, 162, 235, 0.5)',
+//     //   yAxisID: 'y1',
+//     // },
+//   ],
+// };
+const HomePage = (props) => {
+  const { phrId } = useParams();
+  // const cme = useCMEditViewDataManager();
+  // console.log(props, cme);
+  const [phr, setPhr] = useState([]);
+  const [diagnosedServices, setDiagnosedServices] = useState([]);
+
+  const getData = async () => {
+    try {
+      axios
+        .get(`/api/phrs/${phrId}`, {
+          params: {
+            populate: [
+              "diagnosedServices.serviceName",
+              "diagnosedServices.serviceProvider",
+            ],
+          },
+        })
+        .then((response) => {
+          setPhr(response.data?.data?.attributes);
+          let diag = response.data?.data?.attributes.diagnosedServices;
+          diag = groupBy(diag, (d) => {
+            return d.serviceName.data.attributes.name;
+          });
+          const finalDiag = [];
+          for (let key in diag) {
+            if (diag[key].length > 1) {
+              const labels = [];
+              const data = [];
+              diag[key]?.forEach((d) => {
+                labels.push(d.diagnosedDate);
+                data.push(d.value.match(/\d+\.?\d*/)[0]);
+              });
+              finalDiag.push({
+                name: key,
+                data: {
+                  labels,
+                  datasets: [
+                    {
+                      label: key,
+                      data: data,
+                      borderColor: "rgb(255, 99, 132)",
+                      backgroundColor: "rgba(255, 99, 132, 0.5)",
+                      yAxisID: "y",
+                    },
+                  ],
+                  options: {
+                    ...defaultOptions,
+                    plugins: {
+                      title: {
+                        display: false,
+                        text: key,
+                      },
+                    },
+                  },
+                },
+              });
+            }
+          }
+          console.log(
+            "🚀 ~ file: diagnostic.js:191 ~ .then ~ finalDiag:",
+            finalDiag
+          );
+          setDiagnosedServices(finalDiag);
+        })
+        .catch(console.error);
+    } catch (error) {
+      console.error("🚀 ~ file: index.js:22 ~ getUserData ~ error:", error);
+    }
+  };
+  const ref = useRef();
+
+  useEffect(() => {
+    getData();
+  }, []);
+  return (
+    <Layout>
+      <HeaderLayout title={`Diagnostic charts`} subtitle={`Download`} as="h2" />
+      <ContentLayout>
+        <Grid container spacing={4}>
+          {!!diagnosedServices.length && (
+            <ReactToPrint
+              bodyClass="print-agreement"
+              content={() => ref.current}
+              trigger={() => (
+                <Button variant="contained" fullWidth color="primary">
+                  Print
+                </Button>
+              )}
+            />
+          )}
+
+          <Card ref={ref}>
+            {!!diagnosedServices.length && (
+              <Grid container spacing={10}>
+                {diagnosedServices.map((ds, i) => (
+                  <Grid item xs={12} key={`${kebabCase(ds.name)}-${i}`}>
+                    <Grid item xs={12}>
+                      <Typography
+                        textAlign={"center"}
+                        variant="subtitle2"
+                        fontSize={20}
+                        textTransform={"uppercase"}
+                      >
+                        {ds.name}
+                      </Typography>
+                    </Grid>
+
+                    <Grid container>
+                      <Grid item md={6}>
+                        {/* <Typography>{ds.name}</Typography> */}
+                        <Line options={ds.data.options} data={ds.data} />
+                      </Grid>
+
+                      <Grid item md={6}>
+                        <TableContainer component={Box}>
+                          <Table aria-label={ds.name}>
+                            <TableHead>
+                              <TableRow>
+                                <TableCell>S.No</TableCell>
+                                <TableCell>Date</TableCell>
+                                <TableCell>Value</TableCell>
+                              </TableRow>
+                            </TableHead>
+                            <TableBody>
+                              {ds.data?.labels?.map((row, index) => (
+                                <TableRow
+                                  key={`${row}-${index}`}
+                                  sx={{
+                                    "&:last-child td, &:last-child th": {
+                                      border: 0,
+                                    },
+                                  }}
+                                >
+                                  <TableCell component="th" scope="row">
+                                    {index + 1}
+                                  </TableCell>
+                                  <TableCell>{row}</TableCell>
+                                  <TableCell>
+                                    {ds.data?.datasets[0]?.data[index]}
+                                  </TableCell>
+                                </TableRow>
+                              ))}
+                            </TableBody>
+                          </Table>
+                        </TableContainer>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+            {!diagnosedServices.length && (
+              <Typography>
+                No Data Available to construct the charts !!
+              </Typography>
+            )}
+          </Card>
+        </Grid>
+      </ContentLayout>
+    </Layout>
+  );
+};
+
+export default HomePage;

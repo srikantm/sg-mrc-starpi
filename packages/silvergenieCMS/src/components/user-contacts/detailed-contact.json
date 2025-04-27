@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_address_detailed_contacts",
+  "info": {
+    "displayName": "detailed Contact",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "contactPersonName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "contactNumber": {
+      "type": "string",
+      "required": true
+    },
+    "contactType": {
+      "type": "enumeration",
+      "enum": [
+        "Personal",
+        "Parents",
+        "Guardian",
+        "Doctor",
+        "Pharmacy",
+        "Hospital"
+      ],
+      "default": "Personal"
+    },
+    "country": {
+      "type": "customField",
+      "customField": "plugin::country-select.country"
+    },
+    "relation": {
+      "type": "string"
+    },
+    "contactDegree": {
+      "type": "string"
+    }
+  }
+}

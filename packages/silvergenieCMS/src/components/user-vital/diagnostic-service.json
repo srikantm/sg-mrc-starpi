@@ -1,0 +1,47 @@
+{
+  "collectionName": "comp_vital_diagnostic_services",
+  "info": {
+    "displayName": "Diagnostic Service",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "serviceName": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::diagnostic-service.diagnostic-service"
+    },
+    "serviceProvider": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::diagnostic-service-vendor.diagnostic-service-vendor"
+    },
+    "diagnosedDate": {
+      "type": "date"
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 500
+    },
+    "value": {
+      "type": "text",
+      "required": true,
+      "maxLength": 500
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "publish": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

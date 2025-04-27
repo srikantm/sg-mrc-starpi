@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_mobile_ui_sg_offer_items",
+  "info": {
+    "displayName": "sg-offer-item"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

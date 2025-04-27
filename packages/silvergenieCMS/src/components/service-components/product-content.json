@@ -1,0 +1,68 @@
+{
+  "collectionName": "components_service_components_product_contents",
+  "info": {
+    "displayName": "ProductSubscriptionContent",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "mainHeading": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "headingDescription": {
+      "type": "text"
+    },
+    "productImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "subHeading1": {
+      "type": "text",
+      "required": true,
+      "maxLength": 30
+    },
+    "subHeading1Description": {
+      "type": "text",
+      "required": true
+    },
+    "FAQ": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service-components.faq"
+    },
+    "showSinglesPlan": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "showCouplePlans": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "exploreCouplePlansHeading": {
+      "type": "string"
+    },
+    "faqHeading": {
+      "type": "string",
+      "default": "How It works?",
+      "required": true
+    },
+    "exploreNowCTALabel": {
+      "type": "string",
+      "required": true,
+      "default": "Explore Now"
+    },
+    "benefitsHeading": {
+      "type": "string",
+      "required": true,
+      "default": "Service we provide"
+    }
+  }
+}

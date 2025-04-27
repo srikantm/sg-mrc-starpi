@@ -1,0 +1,107 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payment_transactions",
+  "info": {
+    "singularName": "payment-transaction",
+    "pluralName": "payment-transactions",
+    "displayName": "paymentTransaction",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "transactionDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "FAILED",
+        "SUCCESS",
+        "PENDING",
+        "CANCELLED"
+      ],
+      "default": "PENDING",
+      "required": true
+    },
+    "vendorResponse": {
+      "type": "json"
+    },
+    "request": {
+      "type": "json"
+    },
+    "paymentFor": {
+      "type": "enumeration",
+      "enum": [
+        "SERVICE",
+        "WALLET",
+        "SUBSCRIPTION"
+      ],
+      "default": "SERVICE"
+    },
+    "value": {
+      "type": "decimal",
+      "required": true
+    },
+    "paymentMethod": {
+      "type": "enumeration",
+      "enum": [
+        "CARD",
+        "INTERNETBANKING",
+        "UPI",
+        "COD",
+        "WALLET",
+        "EMI",
+        "UNKNOWN"
+      ],
+      "default": "UNKNOWN",
+      "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "uniqueKey": {
+      "type": "customField",
+      "customField": "plugin::custom-entity-key.unique-key",
+      "options": {
+        "attributes": "user.email, value, transactionDate"
+      }
+    },
+    "service_tracker": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-tracker.service-tracker",
+      "inversedBy": "payment_transactions"
+    },
+    "vendor": {
+      "type": "enumeration",
+      "enum": [
+        "razorpay"
+      ]
+    },
+    "vendorPaymentId": {
+      "type": "string"
+    },
+    "subscription_tracker": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subscription-tracker.subscription-tracker",
+      "inversedBy": "payment_transactions"
+    },
+    "vendorInvoiceId": {
+      "type": "string"
+    },
+    "invoice": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_system_form_fields",
+  "info": {
+    "displayName": "formField",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "text",
+        "option",
+        "multiple-option",
+        "checkbox",
+        "date",
+        "time",
+        "media"
+      ],
+      "required": true,
+      "default": "text"
+    },
+    "placeholder": {
+      "type": "string",
+      "default": "Your Answer"
+    },
+    "isRequired": {
+      "type": "boolean",
+      "default": false
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "options": {
+      "type": "text"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

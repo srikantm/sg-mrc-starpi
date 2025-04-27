@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_service_components_steps",
+  "info": {
+    "displayName": "ValueArray",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

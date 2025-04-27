@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_service_components_service_prices",
+  "info": {
+    "displayName": "ServicePrice",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "priceSuperscript": {
+      "type": "string"
+    },
+    "priceDescription": {
+      "type": "text"
+    },
+    "startPrice": {
+      "type": "float",
+      "required": true,
+      "min": 0
+    },
+    "endPrice": {
+      "type": "float"
+    }
+  }
+}

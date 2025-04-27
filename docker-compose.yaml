@@ -1,0 +1,51 @@
+version: "3"
+services:
+  strapi:
+    build: .
+    ports:
+      - "1337:1337"
+    depends_on:
+      - db
+      - redis
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5433/sg
+      DATABASE_HOST: db
+      DATABASE_PORT: 5433
+      DATABASE_NAME: sg
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      NODE_ENV: production
+    volumes:
+      - strapi_uploads:/app/packages/silvergenieCMS/public/uploads
+
+  db:
+    image: postgres:13
+    ports:
+      - "5433:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: sg
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    command: postgres -p 5433
+
+  redis:
+    image: redis:6
+    ports:
+      - "6379:6379"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - strapi
+
+volumes:
+  db_data:
+  strapi_uploads:

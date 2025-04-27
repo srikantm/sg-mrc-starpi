@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{> header }}
+  <body>
+    <div class="col-12 p-4 bg-">
+      <div class="row gap-3">
+        <!-- HEADER -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body d-flex flex-column align-items-center">
+              <h2 class="h4 fw-bold text-primary">
+                Medical Emergency Preparedness Form
+              </h2>
+              <img
+                class="img-responsive"
+                alt="iamgurdeeposahan"
+                src="https://www.yoursilvergenie.com/wp-content/uploads/2021/06/sg-logo.f706d385.png"
+                width="170px"
+              />
+              <p class="text-secondary mt-3 mb-0">
+                Your Wellness is our wish to fill
+              </p>
+              <h2 class="h4 m-0 text-primary">
+                Personalized Care for those, who cared for us
+              </h2>
+            </div>
+          </div>
+        </div>
+        <!-- HEADER END -->
+
+        <!-- USER HEADER -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <div class="align-items-center d-flex gap-2">
+                    <!-- <iconify-icon
+                      class="display-6"
+                      icon="emojione:beaming-face-with-smiling-eyes"
+                    ></iconify-icon> -->
+
+                    <div>
+                      <p class="fw-bold">{{firstName}} {{lastName}}</p>
+                      <p class="text-secondary">
+                        {{gender}}, {{defaultValue age "0"}} Yrs
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mt-3 align-items-center d-flex gap-2">
+                    <!-- <iconify-icon
+                      class="display-6"
+                      icon="flat-color-icons:address-book"
+                    ></iconify-icon> -->
+                    <div>
+                      <p class="fw-bold">Address:</p>
+                      <p class="text-secondary">
+                        {{address.streetAddress}} {{address.city}}
+                        {{address.state}} {{address.postalCode}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="align-items-center d-flex gap-2">
+                    <!-- <iconify-icon
+                      class="display-6"
+                      icon="fluent-emoji:open-mailbox-with-raised-flag"
+                    ></iconify-icon> -->
+                    <div>
+                      <p class="fw-bold">Email:</p>
+                      <p class="text-secondary">
+                        {{defaultValue email belongsTo.email}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mt-3 align-items-center d-flex gap-2">
+                    <!-- <iconify-icon
+                      class="display-6"
+                      icon="emojione-v1:mobile-phone"
+                    ></iconify-icon> -->
+                    <div class="mt-3">
+                      <p class="fw-bold">Phone:</p>
+                      <p class="text-secondary">
+                        {{defaultValue phoneNumber belongsTo.phoneNumber}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- USER HEADER END -->
+
+        <!-- EMERGENCY CONTACTS -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <div class="d-flex align-items-center gap-2">
+                  <iconify-icon
+                    class="display-5"
+                    icon="flat-color-icons:contacts"
+                  ></iconify-icon>
+                  <p class="lead fw-bold text-decoration-underline">
+                    Emergency Contacts
+                  </p>
+                </div>
+
+                <table class="table table-bordered border-primary fs-6">
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">Personal</th>
+                      {{!--
+                      <th scope="col">Hospitals</th>
+                      --}}
+                      <th scope="col">Doctors</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="">
+                      <td class="p-0" scope="row">
+                        {{#each emergencyContactsGrouped.Personal}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}} {{#each emergencyContactsGrouped.Parents}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}} {{#each emergencyContactsGrouped.Guardian}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}}
+                      </td>
+                      {{!--
+                      <td class="p-0" scope="row">
+                        {{#each emergencyContactsGrouped.Hospital}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}}
+                      </td>
+                      --}}
+                      <td class="p-0" scope="row">
+                        {{#each emergencyContactsGrouped.Doctor}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}} {{#each emergencyContactsGrouped.Pharmacy}}
+                        <table class="table table-nested p-0 m-0">
+                          <tbody>
+                            <tr>
+                              <td rowspan="2" class="border-td">
+                                {{defaultValue this.contactPersonName
+                                "NA"}}{{#if
+                                this.relation}}&nbsp;&nbsp;({{this.relation}}){{/if}}
+                              </td>
+                              <td>{{defaultValue this.email "NA"}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{defaultValue this.contactNumber "NA"}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {{/each}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- EMERGENCY CONTACTS ENDS -->
+
+        <!-- INSURANCE -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <div class="d-flex align-items-center gap-2">
+                  <iconify-icon
+                    class="display-5"
+                    icon="fluent-emoji:shield"
+                  ></iconify-icon>
+                  <p class="lead fw-bold text-decoration-underline">
+                    User Insurance
+                  </p>
+                </div>
+                {{!--
+                <p class="">Diagnostic services in the last 3 months:</p>
+                --}}
+                <table class="table table-bordered border-primary fs-6">
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">Expire Date</th>
+                      <th scope="col">Insurance Provider</th>
+                      <th scope="col">Policy Number</th>
+                      <th scope="col">Contact Person</th>
+                      <th scope="col">Contact Number</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each UserInsurance}}
+                    <tr class="">
+                      <td scope="row">{{this.expiryDate}}</td>
+                      <td scope="row">{{this.insuranceProvider}}</td>
+                      <td scope="row">{{this.policyNumber}}</td>
+                      <td scope="row">{{this.contactPerson}}</td>
+                      <td scope="row">{{this.contactNumber}}</td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- INSURANCE ENDS -->
+
+        <!-- HOSPITALS -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <div class="d-flex align-items-center gap-2">
+                  <iconify-icon
+                    class="display-5"
+                    icon="fluent-emoji:hospital"
+                  ></iconify-icon>
+                  <p class="lead fw-bold text-decoration-underline">
+                    Preferred Hospitals (Rank-wise)
+                  </p>
+                </div>
+                {{!--
+                <p class="">Diagnostic services in the last 3 months:</p>
+                --}}
+                <table class="table table-bordered border-primary fs-6">
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Contact Person</th>
+                      <th scope="col">Contact Number</th>
+                      <th scope="col">Ambulance Contact</th>
+                      <th scope="col">Type Of Support</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each preferredHospitals}}
+                    <tr class="">
+                      <td scope="row">{{this.name}}</td>
+                      <td scope="row">{{this.contactPerson}}</td>
+                      <td scope="row">{{this.contactNumber}}</td>
+                      <td scope="row">{{this.ambulanceContact}}</td>
+                      <td scope="row">{{this.TypeOfSupport}}</td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- HOSPITALS ENDS -->
+
+        <!-- HOSPITALS -->
+        <div class="col-12 phr-section">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <div class="d-flex align-items-center gap-2">
+                  <iconify-icon
+                    class="display-5"
+                    icon="fluent-emoji:ambulance"
+                  ></iconify-icon>
+                  <p class="lead fw-bold text-decoration-underline">
+                    Preferred Ambulance (Rank-wise)
+                  </p>
+                </div>
+                {{!--
+                <p class="">Diagnostic services in the last 3 months:</p>
+                --}}
+                <table class="table table-bordered border-primary fs-6">
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Contact Person</th>
+                      <th scope="col">Contact Number</th>
+                      <th scope="col">Ambulance Contact</th>
+                      <th scope="col">Type Of Support</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each preferredAmbulance}}
+                    <tr class="">
+                      <td scope="row">{{this.name}}</td>
+                      <td scope="row">{{this.contactPerson}}</td>
+                      <td scope="row">{{this.contactNumber}}</td>
+                      <td scope="row">{{this.ambulanceContact}}</td>
+                      <td scope="row">{{this.TypeOfSupport}}</td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- HOSPITALS ENDS -->
+
+        <div class="text-center text-capitalize px-5">
+          <p class="fw-bold">Created By</p>
+          <p>{{createdBy.firstname}} {{createdBy.lastname}}</p>
+          <a href="mailto:geniecare@yoursilvergenie.com">{{createdBy.email}}</a>
+
+          <p class="fw-bold">Created On: {{formatDate createdAt}}</p>
+          <p class="">To get your PHR updated, please contact SilverGenie at</p>
+          <a href="mailto:geniecare@yoursilvergenie.com"
+            >geniecare@yoursilvergenie.com</a
+          >
+          <p class="">
+            <span class="fw-bolder text-primary">Disclaimer:</span>
+          </p>
+          This form contains only and exactly that information which was
+          provided to us by the client or their loved one.
+        </div>
+      </div>
+    </div>
+
+    {{> footer }}
+  </body>
+  <!-- (Optional) Use CSS or JS implementation -->
+</html>

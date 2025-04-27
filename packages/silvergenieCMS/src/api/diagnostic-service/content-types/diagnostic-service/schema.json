@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "diagnostic_services",
+  "info": {
+    "singularName": "diagnostic-service",
+    "pluralName": "diagnostic-services",
+    "displayName": "Diagnostic Services",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "maxValue": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "serviceProviders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::diagnostic-service-vendor.diagnostic-service-vendor",
+      "inversedBy": "services"
+    }
+  }
+}

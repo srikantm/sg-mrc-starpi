@@ -1,0 +1,114 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscription_trackers",
+  "info": {
+    "singularName": "subscription-tracker",
+    "pluralName": "subscription-trackers",
+    "displayName": "SubscriptionTracker",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "due",
+        "paid",
+        "partiallyPaid",
+        "expired"
+      ],
+      "default": "due",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "requested",
+        "processing",
+        "processed",
+        "active",
+        "completed",
+        "rejected"
+      ],
+      "default": "requested",
+      "required": true
+    },
+    "expiresOn": {
+      "type": "datetime"
+    },
+    "startDate": {
+      "type": "datetime"
+    },
+    "family": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::family.family",
+      "inversedBy": "subscription_trackers"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "subscription_trackers"
+    },
+    "benefits": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::benefit.benefit"
+    },
+    "subscribedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "createdSubscriptions"
+    },
+    "amount": {
+      "type": "integer"
+    },
+    "priceId": {
+      "type": "integer"
+    },
+    "razorpaySubscriptionId": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service-components.metadata"
+    },
+    "belongsTo": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "subscriptions"
+    },
+    "payment_transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment-transaction.payment-transaction",
+      "mappedBy": "subscription_tracker"
+    },
+    "subscriptionStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Active",
+        "Expired"
+      ],
+      "default": "Active"
+    },
+    "razorpay_subscription": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::razorpay-subscription.razorpay-subscription",
+      "inversedBy": "subscription_trackers"
+    },
+    "priceDetail": {
+      "type": "component",
+      "repeatable": false,
+      "component": "price.price-details"
+    }
+  }
+}

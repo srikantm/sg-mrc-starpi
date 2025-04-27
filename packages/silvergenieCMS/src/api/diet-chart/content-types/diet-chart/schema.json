@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "diet_charts",
+  "info": {
+    "singularName": "diet-chart",
+    "pluralName": "diet-charts",
+    "displayName": "Diet Chart",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "diet_chart"
+    },
+    "DietDays": {
+      "displayName": "DietComponent",
+      "type": "component",
+      "repeatable": true,
+      "component": "diet.diet-component"
+    }
+  }
+}

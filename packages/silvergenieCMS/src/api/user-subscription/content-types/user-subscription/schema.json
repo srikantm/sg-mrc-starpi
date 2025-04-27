@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_subscriptions",
+  "info": {
+    "singularName": "user-subscription",
+    "pluralName": "user-subscriptions",
+    "displayName": "userSubscription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_subscriptions"
+    },
+    "startDate": {
+      "type": "datetime"
+    },
+    "subscription_plan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subscription-plan.subscription-plan"
+    },
+    "paymentCompleted": {
+      "type": "boolean",
+      "default": false
+    },
+    "comment": {
+      "type": "text"
+    },
+    "endDate": {
+      "type": "datetime"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": false
+    },
+    "uniqueKey": {
+      "type": "customField",
+      "options": {
+        "attributes": "subscription_plan.uniqueKey"
+      },
+      "customField": "plugin::custom-entity-key.unique-key"
+    }
+  }
+}

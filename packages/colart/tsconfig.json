@@ -1,0 +1,27 @@
+{
+  "extends": "../../tsconfig.common.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      // "@colart": ["./src/assets/icons/"],
+      "@colart/*": ["./src/*"]
+      // "@images": ["./src/assets/images/"],
+      // "@components": ["./src/components/index"],
+      // "@components/*": ["./src/components/*"],
+      // "@elements": ["./src/elements/index"],
+      // "@elements/*": ["./src/elements/*"],
+      // "@theme": ["./src/theme/index"],
+      // "@theme/*": ["./src/theme/*"],
+      // "@utils": ["./src/utils/index"],
+      // "@utils/*": ["./src/utils/*"],
+      // "@helpers": ["./src/helpers/index"],
+      // "@helpers/*": ["./src/helpers/*"],
+      // "@constants": ["./src/constants"],
+      // "@hooks": ["./src/hooks/index"],
+      // "@enums": ["./src/enums/index.ts"]
+    },
+    "emitDeclarationOnly": true
+  },
+  // "noEmit": true,
+  "include": ["src", "images.d.ts", "**/*.ts", "**/*.tsx"]
+}

@@ -1,0 +1,25 @@
+{
+  "collectionName": "comp_vital_chronic_conditions",
+  "info": {
+    "displayName": "chronic Condition",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "condition": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::chronic.chronic"
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "diagnosedDate": {
+      "type": "date"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

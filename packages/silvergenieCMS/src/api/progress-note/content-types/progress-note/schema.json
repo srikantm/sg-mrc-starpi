@@ -1,0 +1,95 @@
+{
+  "kind": "collectionType",
+  "collectionName": "progress_notes",
+  "info": {
+    "singularName": "progress-note",
+    "pluralName": "progress-notes",
+    "displayName": "Progress Note",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "client": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "VisitDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "careGiver": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::care-coach.care-coach"
+    },
+    "serviceProvided": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sub-service.sub-service"
+    },
+    "clientReport": {
+      "type": "blocks",
+      "required": true
+    },
+    "familyReport": {
+      "type": "blocks",
+      "required": true
+    },
+    "physicalStatus": {
+      "type": "blocks",
+      "required": true
+    },
+    "mobility": {
+      "type": "blocks",
+      "required": true
+    },
+    "skin": {
+      "type": "blocks",
+      "required": true
+    },
+    "emotionalStatus": {
+      "type": "blocks",
+      "required": true
+    },
+    "progressAssessment": {
+      "type": "blocks",
+      "required": true
+    },
+    "painAssessment": {
+      "type": "blocks",
+      "required": true
+    },
+    "emotionalAssessment": {
+      "type": "blocks",
+      "required": true
+    },
+    "overallStatus": {
+      "type": "blocks",
+      "required": true
+    },
+    "careAdjustment": {
+      "type": "blocks",
+      "required": true
+    },
+    "followUp": {
+      "type": "blocks",
+      "required": true
+    },
+    "familyGuidance": {
+      "type": "blocks",
+      "required": true
+    },
+    "medicalConsults": {
+      "type": "blocks",
+      "required": true
+    },
+    "vitalSigns": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

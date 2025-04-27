@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_service_components_product_forms",
+  "info": {
+    "displayName": "ProductForm",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "required": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "requiredMsg": {
+      "type": "string",
+      "default": "Required"
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "hidden": {
+      "type": "boolean",
+      "default": false
+    },
+    "hint": {
+      "type": "enumeration",
+      "enum": [
+        "pinCode",
+        "shiftDurationDays",
+        "quantity"
+      ]
+    }
+  }
+}

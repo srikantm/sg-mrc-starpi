@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_form_field_type_time_questions",
+  "info": {
+    "displayName": "TimeQuestion"
+  },
+  "options": {},
+  "attributes": {
+    "initialValue": {
+      "type": "time"
+    },
+    "startTime": {
+      "type": "time"
+    },
+    "endTime": {
+      "type": "time"
+    },
+    "timeFormat": {
+      "type": "enumeration",
+      "enum": [
+        "HH:mm:ss"
+      ],
+      "default": "HH:mm:ss",
+      "required": true
+    },
+    "validations": {
+      "displayName": "FormValidation",
+      "type": "component",
+      "repeatable": true,
+      "component": "form-field-type.form-validation"
+    },
+    "formDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service-components.product-form",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "time"
+      ],
+      "default": "time",
+      "required": true
+    }
+  }
+}

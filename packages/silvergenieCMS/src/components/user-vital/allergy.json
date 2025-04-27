@@ -1,0 +1,24 @@
+{
+  "collectionName": "comp_vital_allergies",
+  "info": {
+    "displayName": "allergy",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "allergyType": {
+      "type": "string",
+      "required": true
+    },
+    "alleryComponent": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "diagnosedDate": {
+      "type": "date"
+    }
+  }
+}

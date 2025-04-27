@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_form_field_type_validator_value_msgs",
+  "info": {
+    "displayName": "ValidatorValueMsg"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

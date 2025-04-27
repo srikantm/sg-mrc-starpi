@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_mobile_ui_news_letters",
+  "info": {
+    "displayName": "news-letter",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "newsletters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "mobile-ui.button"
+    }
+  }
+}

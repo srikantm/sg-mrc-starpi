@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_medical_medicines",
+  "info": {
+    "displayName": "medicine",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "dose": {
+      "type": "string",
+      "required": true
+    },
+    "Dosage": {
+      "type": "string",
+      "required": true
+    },
+    "schedule": {
+      "type": "string",
+      "required": true
+    },
+    "Duration": {
+      "type": "string",
+      "required": true
+    },
+    "medicineType": {
+      "type": "enumeration",
+      "enum": [
+        "Homeopathy",
+        "Allopathy",
+        "Ayurvedic"
+      ],
+      "default": "Allopathy"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_service_components_service_descriptions",
+  "info": {
+    "displayName": "ServiceDescription",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "serviceImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "headingAlignment": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ],
+      "required": true,
+      "default": "left"
+    }
+  }
+}

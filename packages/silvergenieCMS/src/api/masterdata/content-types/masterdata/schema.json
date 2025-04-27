@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "master_data",
+  "info": {
+    "singularName": "masterdata",
+    "pluralName": "master-data",
+    "displayName": "Masterdata"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contactUs": {
+      "displayName": "contactUs",
+      "type": "component",
+      "repeatable": false,
+      "component": "masterdata.contact-us"
+    },
+    "emergencyHelpline": {
+      "displayName": "EmergencyHelpline",
+      "type": "component",
+      "repeatable": false,
+      "component": "masterdata.emergency-helpline"
+    }
+  }
+}

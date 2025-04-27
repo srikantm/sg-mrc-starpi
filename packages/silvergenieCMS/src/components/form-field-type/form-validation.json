@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_form_field_type_form_validations",
+  "info": {
+    "displayName": "FormValidation",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "valueMsg": {
+      "displayName": "ValidatorValueMsg",
+      "type": "component",
+      "repeatable": false,
+      "component": "form-field-type.validator-value-msg",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "minValue",
+        "maxValue",
+        "regex",
+        "maxLength",
+        "minLength"
+      ]
+    }
+  }
+}

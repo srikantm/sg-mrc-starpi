@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_form_field_type_date_questions",
+  "info": {
+    "displayName": "DateQuestion"
+  },
+  "options": {},
+  "attributes": {
+    "initialValue": {
+      "type": "date"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "dateFormat": {
+      "type": "enumeration",
+      "enum": [
+        "dd/MM/yyyy"
+      ],
+      "default": "dd/MM/yyyy",
+      "required": true
+    },
+    "validations": {
+      "displayName": "FormValidation",
+      "type": "component",
+      "repeatable": true,
+      "component": "form-field-type.form-validation"
+    },
+    "formDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service-components.product-form",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "date"
+      ],
+      "default": "date",
+      "required": true
+    }
+  }
+}

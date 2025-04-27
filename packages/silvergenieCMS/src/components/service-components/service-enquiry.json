@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_service_components_service_enquiries",
+  "info": {
+    "displayName": "ServiceEnquiry"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true,
+      "default": "For More enquires"
+    },
+    "contactTeam": {
+      "type": "string",
+      "required": true,
+      "default": "Contact SilverGenie team"
+    },
+    "ctaLabel": {
+      "type": "string",
+      "required": true,
+      "default": "call now"
+    },
+    "enqiuryPhoneNumber": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

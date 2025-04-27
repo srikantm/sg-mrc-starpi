@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_price_discounts",
+  "info": {
+    "displayName": "discount"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "discountType": {
+      "type": "enumeration",
+      "enum": [
+        "fixed",
+        "percentage"
+      ],
+      "default": "fixed",
+      "required": true
+    },
+    "value": {
+      "type": "float",
+      "required": true,
+      "min": 0
+    }
+  }
+}

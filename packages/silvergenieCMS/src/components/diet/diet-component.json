@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_diet_diet_components",
+  "info": {
+    "displayName": "DietComponent",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Day": {
+      "type": "enumeration",
+      "enum": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "required": true
+    },
+    "Breakfast": {
+      "displayName": "dietFoods",
+      "type": "component",
+      "repeatable": true,
+      "component": "diet.diet-foods"
+    },
+    "Lunch": {
+      "type": "component",
+      "repeatable": true,
+      "component": "diet.diet-foods"
+    },
+    "Dinner": {
+      "type": "component",
+      "repeatable": true,
+      "component": "diet.diet-foods"
+    }
+  }
+}

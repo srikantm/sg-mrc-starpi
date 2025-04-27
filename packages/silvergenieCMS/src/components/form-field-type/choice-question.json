@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_form_field_type_choice_questions",
+  "info": {
+    "displayName": "ChoiceQuestion",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "controlType": {
+      "type": "enumeration",
+      "enum": [
+        "dropDown",
+        "checkBox"
+      ],
+      "required": true
+    },
+    "options": {
+      "displayName": "ChoiceOptions",
+      "type": "component",
+      "repeatable": true,
+      "component": "form-field-type.choice-options",
+      "required": true
+    },
+    "formDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service-components.product-form",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "choice"
+      ],
+      "default": "choice",
+      "required": true
+    }
+  }
+}

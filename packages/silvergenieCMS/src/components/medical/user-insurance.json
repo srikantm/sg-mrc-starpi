@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_medical_user_insurances",
+  "info": {
+    "displayName": "UserInsurance",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "insuranceProvider": {
+      "type": "string",
+      "required": true
+    },
+    "policyNumber": {
+      "type": "string"
+    },
+    "contactPerson": {
+      "type": "string",
+      "required": true
+    },
+    "contactNumber": {
+      "type": "string",
+      "required": true
+    },
+    "expiryDate": {
+      "type": "date"
+    }
+  }
+}

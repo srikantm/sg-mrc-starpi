@@ -1,0 +1,67 @@
+{
+  "collectionName": "components_form_form_answers",
+  "info": {
+    "displayName": "formAnswer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "valueInteger": {
+      "type": "integer"
+    },
+    "valueDecimal": {
+      "type": "decimal"
+    },
+    "valueString": {
+      "type": "text"
+    },
+    "valueText": {
+      "type": "text"
+    },
+    "valueBoolean": {
+      "type": "boolean"
+    },
+    "valueDate": {
+      "type": "date"
+    },
+    "valueTime": {
+      "type": "time"
+    },
+    "valueDatetime": {
+      "type": "datetime"
+    },
+    "hint": {
+      "type": "string"
+    },
+    "questionId": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "choice",
+        "reference",
+        "integer",
+        "decimal",
+        "boolean",
+        "date",
+        "dateTime",
+        "time",
+        "string",
+        "text"
+      ],
+      "required": true
+    },
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "valueReference": {
+      "type": "string"
+    },
+    "valueChoice": {
+      "type": "string"
+    }
+  }
+}

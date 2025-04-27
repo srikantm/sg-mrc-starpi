@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_documents",
+  "info": {
+    "singularName": "user-document",
+    "pluralName": "user-documents",
+    "displayName": "userDocument"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "comment": {
+      "type": "string"
+    },
+    "document": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "documentType": {
+      "type": "enumeration",
+      "enum": [
+        "Prescription",
+        "Laboratory Results",
+        "Radiology & Imaging Results",
+        "Diagnostic Reports",
+        "Hospital Reports"
+      ]
+    }
+  }
+}

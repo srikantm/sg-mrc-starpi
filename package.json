@@ -1,0 +1,29 @@
+{
+  "name": "silvergenie2.0",
+  "packageManager": "yarn@3.6.1",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "yarn clean:build && lerna clean && rm -rf ./node_modules && yarn cache clean",
+    "clean:build": "lerna exec -- rm -rf dist/ lib/",
+    "bootstrap:link": "lerna link",
+    "build": "lerna run build",
+    "storybook": "lerna run storybook",
+    "cms": "lerna run dev --scope=silvergenie-cms",
+    "cms:prod": "lerna run start --scope=silvergenie-cms",
+    "form:prod": "lerna run start --scope=silverforms",
+    "form:build": "lerna run build --scope=silverforms",
+    "cms:build": "lerna run build --scope=silvergenie-cms",
+    "app": "lerna run dev --scope=@silvergenie/application"
+  },
+  "devDependencies": {
+    "lerna": "^5.6.2"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.17",
+    "next": "^14.0.1"
+  }
+}

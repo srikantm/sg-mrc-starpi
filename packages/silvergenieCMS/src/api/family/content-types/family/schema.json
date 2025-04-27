@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "families",
+  "info": {
+    "singularName": "family",
+    "pluralName": "families",
+    "displayName": "Family",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "family"
+    },
+    "service_trackers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-tracker.service-tracker",
+      "mappedBy": "family"
+    },
+    "subscription_trackers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subscription-tracker.subscription-tracker",
+      "mappedBy": "family"
+    }
+  }
+}

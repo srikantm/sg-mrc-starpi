@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "razorpay_subscriptions",
+  "info": {
+    "singularName": "razorpay-subscription",
+    "pluralName": "razorpay-subscriptions",
+    "displayName": "RazorpaySubscription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "subscriptionId": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 1
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "created",
+        "authenticated",
+        "active",
+        "pending",
+        "halted",
+        "cancelled",
+        "paused",
+        "expired",
+        "completed"
+      ],
+      "default": "created",
+      "required": true
+    },
+    "planId": {
+      "type": "string",
+      "required": true
+    },
+    "notes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service-components.metadata"
+    },
+    "chargeAt": {
+      "type": "datetime"
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "paidCount": {
+      "type": "integer"
+    },
+    "shortUrl": {
+      "type": "string"
+    },
+    "hasScheduledChanges": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "remainingCount": {
+      "type": "integer"
+    },
+    "customerId": {
+      "type": "string"
+    },
+    "subscription_trackers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subscription-tracker.subscription-tracker",
+      "mappedBy": "razorpay_subscription"
+    },
+    "currentStart": {
+      "type": "datetime"
+    },
+    "currentEnd": {
+      "type": "datetime"
+    }
+  }
+}

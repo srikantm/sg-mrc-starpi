@@ -1,0 +1,131 @@
+{
+  "kind": "collectionType",
+  "collectionName": "phrs",
+  "info": {
+    "singularName": "phr",
+    "pluralName": "phrs",
+    "displayName": "PHR",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "age": {
+      "type": "integer",
+      "max": 100,
+      "min": 10
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female",
+        "other"
+      ]
+    },
+    "bloodGroup": {
+      "type": "enumeration",
+      "enum": [
+        "(A+) A RhD positive",
+        "(A-) A RhD negative",
+        "(B+) B RhD positive",
+        "(B-) B RhD negative",
+        "(O+) O RhD positive",
+        "(O-) O RhD negative",
+        "(AB+) AB RhD positive",
+        "(AB-) AB RhD negative"
+      ]
+    },
+    "documents": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "downloadPhr": {
+      "type": "boolean",
+      "default": false
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "user-contacts.address"
+    },
+    "uniqueKey": {
+      "type": "customField",
+      "options": {
+        "attributes": "firstName, lastName"
+      },
+      "customField": "plugin::custom-entity-key.unique-key"
+    },
+    "chronicCondition": {
+      "displayName": "chronic Condition",
+      "type": "component",
+      "repeatable": true,
+      "component": "user-vital.chronic-condition"
+    },
+    "vaccineRecords": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user-vital.vaccine-records"
+    },
+    "diagnosedServices": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user-vital.diagnostic-service"
+    },
+    "medicalConditions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user-vital.medical-condition"
+    },
+    "covidVaccines": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user-vital.covid-vaccine"
+    },
+    "fitnessRegime": {
+      "type": "component",
+      "repeatable": false,
+      "component": "user-vital.fitness-regime"
+    },
+    "prescription": {
+      "type": "component",
+      "repeatable": true,
+      "component": "medical.prescription"
+    },
+    "belongsTo": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "phr"
+    },
+    "allergies": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user-vital.allergy"
+    },
+    "additionalInformation": {
+      "type": "richtext"
+    }
+  }
+}

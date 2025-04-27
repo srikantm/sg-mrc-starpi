@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_mobile_ui_testimonials",
+  "info": {
+    "displayName": "testimonials"
+  },
+  "options": {},
+  "attributes": {
+    "testimonials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::testimonial.testimonial"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Testimonials"
+    }
+  }
+}

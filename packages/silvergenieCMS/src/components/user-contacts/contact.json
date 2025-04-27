@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_address_contacts",
+  "info": {
+    "displayName": "contact",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "phoneNumber": {
+      "type": "string",
+      "required": true
+    },
+    "contactPerson": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

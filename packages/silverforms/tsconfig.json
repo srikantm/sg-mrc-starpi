@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.common.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "rootDir": "../",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@colart/*": ["../colart/src/*"],
+      "@colart/dist/*": ["../colart/dist/*"]
+    },
+    "noEmit": true
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"],
+  "references": [
+    {
+      "path": "../colart"
+    }
+  ]
+}

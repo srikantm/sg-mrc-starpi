@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chronics",
+  "info": {
+    "singularName": "chronic",
+    "pluralName": "chronics",
+    "displayName": "Medical Conditions",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "shortDescription": {
+      "type": "string"
+    },
+    "maxMeasureValue": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_price_product_prices",
+  "info": {
+    "displayName": "productPrice",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "productId": {
+      "type": "string",
+      "required": true
+    },
+    "displayName": {
+      "type": "string",
+      "required": true
+    },
+    "productName": {
+      "type": "string"
+    },
+    "price": {
+      "type": "float"
+    },
+    "priceId": {
+      "type": "string",
+      "required": false
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "default": 1
+    }
+  }
+}

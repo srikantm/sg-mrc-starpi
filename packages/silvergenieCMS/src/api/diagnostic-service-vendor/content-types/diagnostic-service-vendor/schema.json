@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "diagnostic_service_vendors",
+  "info": {
+    "singularName": "diagnostic-service-vendor",
+    "pluralName": "diagnostic-service-vendors",
+    "displayName": "Diagnostic Service Vendors",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "user-contacts.address"
+    },
+    "contact": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user-contacts.contact"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::diagnostic-service.diagnostic-service",
+      "mappedBy": "serviceProviders"
+    },
+    "phr": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phr.phr",
+      "mappedBy": "belongsTo"
+    }
+  }
+}

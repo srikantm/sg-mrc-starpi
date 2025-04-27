@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_service_components_service_data",
+  "info": {
+    "displayName": "ServiceData",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "text",
+      "required": true
+    },
+    "private": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "formData"
+      ],
+      "default": "formData",
+      "required": true
+    }
+  }
+}

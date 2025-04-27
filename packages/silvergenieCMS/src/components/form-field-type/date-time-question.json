@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_form_field_type_date_time_questions",
+  "info": {
+    "displayName": "DateTimeQuestion"
+  },
+  "options": {},
+  "attributes": {
+    "initialValue": {
+      "type": "datetime"
+    },
+    "startDateTime": {
+      "type": "datetime"
+    },
+    "endDateTime": {
+      "type": "datetime"
+    },
+    "dateTimeFormat": {
+      "type": "enumeration",
+      "enum": [
+        "MM/dd/yy HH:mm:ss ZZZZ"
+      ],
+      "default": "MM/dd/yy HH:mm:ss ZZZZ",
+      "required": true
+    },
+    "validations": {
+      "displayName": "FormValidation",
+      "type": "component",
+      "repeatable": true,
+      "component": "form-field-type.form-validation"
+    },
+    "formDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service-components.product-form",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "dateTime"
+      ],
+      "default": "dateTime",
+      "required": true
+    }
+  }
+}

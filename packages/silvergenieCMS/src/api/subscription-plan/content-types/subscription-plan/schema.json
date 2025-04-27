@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscription_plans",
+  "info": {
+    "singularName": "subscription-plan",
+    "pluralName": "subscription-plans",
+    "displayName": "subscriptionPlan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "discount": {
+      "type": "decimal"
+    },
+    "tax": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "service": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service.service",
+      "inversedBy": "subscriptionPlans"
+    },
+    "uniqueKey": {
+      "type": "customField",
+      "options": {
+        "attributes": "service.name,name"
+      },
+      "customField": "plugin::custom-entity-key.unique-key"
+    }
+  }
+}

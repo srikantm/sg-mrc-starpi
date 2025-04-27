@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "doctor_specializations",
+  "info": {
+    "singularName": "doctor-specialization",
+    "pluralName": "doctor-specializations",
+    "displayName": "DoctorSpecialization",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    }
+  }
+}

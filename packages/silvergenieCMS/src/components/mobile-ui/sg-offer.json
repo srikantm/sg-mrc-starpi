@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_mobile_ui_sg_offers",
+  "info": {
+    "displayName": "sg-offer"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "values": {
+      "displayName": "sg-offer-item",
+      "type": "component",
+      "repeatable": true,
+      "component": "mobile-ui.sg-offer-item"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Silvergenie</string>
+    <string name="title_activity_main">Silvergenie</string>
+    <string name="package_name">com.yoursilvergenie.app</string>
+    <string name="custom_url_scheme">com.yoursilvergenie.app</string>
+</resources>

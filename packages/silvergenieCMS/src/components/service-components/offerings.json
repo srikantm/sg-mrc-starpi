@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_service_components_offerings",
+  "info": {
+    "displayName": "Offerings"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "offerings": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service-components.steps"
+    }
+  }
+}

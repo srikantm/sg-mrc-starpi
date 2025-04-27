@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_form_field_type_choice_options",
+  "info": {
+    "displayName": "ChoiceOptions",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "display": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "isDefault": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
